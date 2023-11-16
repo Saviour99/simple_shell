@@ -6,7 +6,7 @@
  *Return: 0 on sucess and 1 when it's an error.
  */
 
-int main(void)
+int main( __attribute__((unused))int argc, char *argv[], __attribute__((unused)) char **envp)
 {
 	size_t buff_size = 0;
 	char *buff = NULL, *token, **arr;
@@ -21,7 +21,7 @@ int main(void)
 		display_prompt();
 		if (getline(&buff, &buff_size, stdin) == -1)
 		{
-			perror("Getline failed");
+			perror(argv[0]);
 			free(buff);
 			exit(EXIT_FAILURE);
 		}
@@ -37,7 +37,7 @@ int main(void)
 		if (kid_pid == 0)
 		{
 			execve(arr[0], arr, NULL);
-			perror("Execve failed");
+			perror(argv[0]);
 			exit(EXIT_FAILURE);
 		}
 		else
