@@ -1,11 +1,11 @@
-#include "shell.h"
+/*#include "shell.h"
 
 /**
  *execute_command - execute the commad of the program
  *@str: array of strings
  *
  *Return: void
- */
+ *
 
 void execute_command(const char *str)
 {
@@ -30,4 +30,4 @@ void execute_command(const char *str)
 	{
 		wait(&status);
 	}
-}
+}*/

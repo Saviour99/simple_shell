@@ -1,11 +1,11 @@
-#include "shell.h"
+/*#include "shell.h"
 
 /**
  *tokenizer - tokenize a string
  *@string: pointer to a string 
  *
  *Return: void
- */
+ *
 
 void tokenizer(char *string)
 {
@@ -18,4 +18,4 @@ void tokenizer(char *string)
 		printf("%s\n", token);
 		token = strtok(NULL, delim);
 	}
-}
+}*/

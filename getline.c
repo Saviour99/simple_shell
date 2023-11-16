@@ -1,10 +1,10 @@
-#include "shell.h"
+/*#include "shell.h"
 
 /**
  *read_input - read user input from the prompt.
  *
  *Return: void
- */
+ *
 
 void read_input(char *buff)
 {
@@ -18,4 +18,4 @@ void read_input(char *buff)
         print(buff);
 
 	free(buff);
-}
+}*/
