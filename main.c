@@ -2,11 +2,13 @@
 
 /**
  *main - Entry point.
- *
+ *@argc: argument count
+ *@argv: argument vector
+
  *Return: 0 on sucess and 1 when it's an error.
  */
 
-int main( __attribute__((unused))int argc, char *argv[], __attribute__((unused)) char **envp)
+int main(__attribute__((unused))int argc, char *argv[])
 {
 	size_t buff_size = 0;
 	char *buff = NULL, *token, **arr;
