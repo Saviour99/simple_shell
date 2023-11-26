@@ -7,7 +7,7 @@
 
  *Return: 0 on sucess and 1 when it's an error.
  */
-
+/*
 int main(__attribute__((unused))int argc, char *argv[])
 {
 	size_t buff_size = 0;
@@ -49,6 +49,7 @@ int main(__attribute__((unused))int argc, char *argv[])
 	free(arr);
 	return (0);
 }
+*/
 
 /**
  *print - print a string
@@ -57,10 +58,12 @@ int main(__attribute__((unused))int argc, char *argv[])
  * Return: void
  */
 
+/*
 void print(char *string)
 {
 	write(STDOUT_FILENO, string, strlen(string));
 }
+*/
 
 /**
  *display_prompt - print the prompt
@@ -68,7 +71,9 @@ void print(char *string)
  *Return: void
  */
 
+/*
 void display_prompt(void)
 {
 	print("$ ");
 }
+*/

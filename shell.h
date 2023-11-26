@@ -12,13 +12,15 @@
 #include <stdbool.h>
 
 /*Prototypes*/
-void interactive_mode(char *str);
-void non_interactive_mode(void);
-void print(char *string);
-void display_prompt(void);
-void read_input(char *buff);
 void tokenizer(char *string);
 void execute_command(const char *str);
 
+
+void print(char *string);
+void display_prompt(void);
+void get_command(char *buff, size_t buff_size);
+void exec_command(char *str);
+
+/*int (*get_builtin(char *cmd))(data_shell *);*/
 
 #endif /*  _SHELL_H_  */
