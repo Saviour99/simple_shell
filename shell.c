@@ -31,7 +31,7 @@ void exec_command(char *str)
 {
 	char *delim = " \t\n", *token;
 	char **av;
-	int status;
+	int status, i = 0;
 	pid_t ch_pid;
 
 	av = malloc(sizeof(char *) * 1024);
@@ -53,13 +53,15 @@ void exec_command(char *str)
 
 		while (token)
 		{
-			av[0] = token;
+			av[i] = token;
 			token = strtok(NULL, delim);
+			i++;
 		}
-		av[1] = NULL;
+		av[i] = NULL;
 
 		if (execve(av[0], av, NULL) == -1)
 			perror("./hsh");
+		i = 0;
 		free(av);
 		exit(EXIT_FAILURE);
 	}
