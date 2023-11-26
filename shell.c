@@ -35,6 +35,12 @@ void exec_command(char *str)
 	pid_t ch_pid;
 
 	av = malloc(sizeof(char *) * 1024);
+	if (av == NULL)
+	{
+		perror("Malloc");
+		exit(EXIT_FAILURE);
+	}
+
 	ch_pid = fork();
 	if (ch_pid == -1)
 	{
@@ -58,7 +64,10 @@ void exec_command(char *str)
 		exit(EXIT_FAILURE);
 	}
 	else
+	{
 		wait(&status);
+	}
+	free(av);
 }
 
 /**
@@ -75,6 +84,7 @@ void get_command(char *buff, size_t buff_size)
 
 	if (line == -1)
 	{
+		print("\n");
 		exit(EXIT_FAILURE);
 	}
 	buff[strcspn(buff, "\n")] = '\0';
@@ -101,4 +111,5 @@ void print(char *string)
 void display_prompt(void)
 {
 	print("$ ");
+	fflush(stdout);
 }
