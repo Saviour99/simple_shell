@@ -54,7 +54,6 @@ void exec_command(char *str)
 
 		if (execve(av[0], av, NULL) == -1)
 			perror("./hsh");
-		
 		free(av);
 		exit(EXIT_FAILURE);
 	}
@@ -65,7 +64,7 @@ void exec_command(char *str)
 /**
  * get_command - reads a line
  * @buff: Holds the string
- * @buff-size: number of char in the string
+ * @buff_size: number of char in the string
  *
  * Return: void
  */
