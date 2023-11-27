@@ -1,6 +1,5 @@
 #include "shell.h"
 
-
 /**
  *main - Entry point
  *
@@ -45,6 +44,7 @@ void exec_command(char *str)
 	if (ch_pid == -1)
 	{
 		perror("Fork");
+		free(av);
 		exit(EXIT_FAILURE);
 	}
 	if (ch_pid == 0)
@@ -59,11 +59,45 @@ void exec_command(char *str)
 		}
 		av[i] = NULL;
 
-		if (execve(av[0], av, NULL) == -1)
-			perror("./hsh");
-		i = 0;
-		free(av);
-		exit(EXIT_FAILURE);
+		if (strchr(av[0], '/') != NULL)
+		{
+			if (execve(av[0], av, NULL) == -1)
+				perror("./hsh");
+			i = 0;
+			free(av);
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			 char *path = getenv("PATH");
+			 char *path_copy = strdup(path);
+			 char *dir = strtok(path_copy, ":"), *full_path;
+
+			 while (dir != NULL) 
+			 {
+				full_path = malloc(strlen(dir) + strlen(av[0]) + 2);
+				if (full_path != NULL) 
+				{
+					strcpy(full_path, dir);
+					strcat(full_path, "/");
+					strcat(full_path, av[0]);
+				}
+
+				if (access(full_path, X_OK) == 0) 
+				{
+					if (execve(full_path, av, NULL) == -1) 
+					{
+						perror("execve");
+						exit(EXIT_FAILURE);
+					}
+				}
+				free(full_path);
+				dir = strtok(NULL, ":");
+			}
+			print(av[0]);
+			print(": Command not found\n");
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{
