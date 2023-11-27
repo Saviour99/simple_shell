@@ -13,7 +13,7 @@ int main(void)
 	while (1)
 	{
 		display_prompt();
-		get_command(command, 200);
+		get_command(command, sizeof(command));
 		exec_command(command);
 	}
 }
@@ -58,6 +58,9 @@ void exec_command(char *str)
 			i++;
 		}
 		av[i] = NULL;
+
+		if (av[0] && strcmp(av[0], "exit") == 0)
+			exit(EXIT_SUCCESS);
 
 		if (strchr(av[0], '/') != NULL)
 		{
